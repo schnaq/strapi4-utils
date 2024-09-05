@@ -4,15 +4,37 @@
 
 This library provides functions to interact with a Strapi v4 API and some more utilities.
 
-### Functions
+## Configuration
 
-#### `queryAPI<T>`
+> [!NOTE]
+> You need to configure environment variables if you want to interact with the Strapi API
+
+- `API_URL`: The URL of the Strapi API
+- `API_TOKEN`: The API token to authenticate with the Strapi API
+
+## Functions
+
+### `queryAPI<T>`
 
 Query a Strapi API and flatten the response. It's always JSON what we are receiving from the API, and we are getting rid of the `attributes` property.
 
 This function is formatted in a way that it can be used within nextjs and benefit from the fetcher function.
 
-#### `getImageUrlForSize`
+Example:
+
+```ts
+// import { Event } from "my/awesome/types"
+
+/**
+ * Fetch an event from the API. The data is flattened and of type Event.
+ */
+export async function getEvent(eventId: Event["id"]) {
+  const response: Event = await queryAPI<Event>([`/events/${eventId}`])
+  return response?.data
+}
+```
+
+### `getImageUrlForSize`
 
 Provide a valid image from a Strapi response. This functions provides the nearest image size to the requested one.
 
