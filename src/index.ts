@@ -13,16 +13,16 @@ import {
  * @param path The path to query.
  * @param body The body to send.
  * @param method The HTTP method to use.
- * @param apiUrl The API URL to the Strapi Backend.
  * @param token The token to use for authentication. Defaults to a Strapi API token.
+ * @param apiUrl The API URL to the Strapi Backend.
  */
 export async function queryAPI<T>([
   path,
   body,
   method,
-  apiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL || process.env.STRAPI_API_URL,
   token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN ||
     process.env.STRAPI_API_TOKEN,
+  apiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL || process.env.STRAPI_API_URL,
 ]: [string, any?, string?, string?, string?]): Promise<
   StrapiResponse<T> | undefined
 > {
