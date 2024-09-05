@@ -59,6 +59,14 @@ getImageUrlForSize(annoyotronImage, "large")
 // => returns the large URL of the image, if available. If not, it returns the next best size, i.e. medium, and so on.
 ```
 
+## Release
+
+To release a new version, run the following command:
+
+```bash
+pnpm release
+```
+
 ## Developed by
 
 ```
