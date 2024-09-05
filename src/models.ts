@@ -91,3 +91,9 @@ export type User = StrapiBaseProps & {
   role?: number
   password?: string
 }
+
+export type Headers = {
+  Authorization?: string
+  "Content-Type"?: "application/json" | "text/plain"
+  body?: string
+}

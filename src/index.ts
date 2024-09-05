@@ -1,4 +1,5 @@
 import {
+  Headers,
   Image,
   ImageFormats,
   ImageWithDimensions,
@@ -8,20 +9,23 @@ import {
 /**
  * Query data from the API. Coerces the response to the given type.
  */
-export async function queryAPI<T>([url, method, body]: [
-  string,
-  string?,
-  any?
-]): Promise<StrapiResponse<T> | undefined> {
-  const completeUrl = `${process.env.API_URL}${url}`
-  console.log(`Querying API: ${completeUrl}`)
+export async function queryAPI<T>([
+  path,
+  body,
+  method,
+  apiUrl = process.env.STRAPI_API_URL,
+  token = process.env.STRAPI_API_TOKEN,
+]: [string, any?, string?, string?, string?]): Promise<
+  StrapiResponse<T> | undefined
+> {
+  const headers: Headers = {
+    Authorization: token ? `Bearer ${token}` : "",
+    "Content-Type": body ? "application/json" : "text/plain",
+  }
 
-  const result = await fetch(completeUrl, {
-    method: method ?? "GET",
-    headers: {
-      Authorization: `Bearer ${process.env.API_TOKEN}`,
-      "Content-Type": body ? "application/json" : "text/plain",
-    },
+  const result = await fetch(`${apiUrl}${path}`, {
+    method: method ? method : body ? "POST" : "GET",
+    headers,
     body: body ? JSON.stringify(body) : undefined,
   })
 
