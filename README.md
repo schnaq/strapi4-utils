@@ -29,7 +29,7 @@ pnpm install @schnaq/strapi4-utils
 
 Query a Strapi API and flatten the response. It's always JSON what we are receiving from the API, and we are getting rid of the `attributes` property.
 
-This function is formatted in a way that it can be used within nextjs and benefit from the fetcher function.
+This function is formatted as a vector to be supported with hooks, like `useSWR`.
 
 Example:
 
@@ -42,6 +42,27 @@ Example:
 export async function getEvent(eventId: Event["id"]) {
   const response: Event = await queryAPI<Event>([`/events/${eventId}`])
   return response?.data
+}
+```
+
+Example: Usage in a react context
+
+```ts
+async function getMyBoxes() {
+  const { data: session, status } = useSession()
+  const [boxes, setBoxes] = useState<Box[]>()
+
+  useSWR(
+    status === "authenticated"
+      ? [`/boxes`, undefined, "GET", session?.accessToken]
+      : null,
+    queryAPI<Box[]>,
+    {
+      onSuccess: (boxes) => {
+        setBoxes(boxes?.data)
+      },
+    }
+  )
 }
 ```
 
