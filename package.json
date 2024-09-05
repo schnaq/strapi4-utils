@@ -14,8 +14,7 @@
     "dev": "tsup --watch",
     "test": "vitest run",
     "test:watch": "vitest",
-    "publish": "pnpm publish --access public",
-    "release": "pnpm build && pnpm test && pnpm run publish"
+    "release": "pnpm build && pnpm test && pnpm publish"
   },
   "private": false,
   "keywords": [
