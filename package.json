@@ -1,0 +1,41 @@
+{
+  "name": "@schnaq/strapi4-utils",
+  "version": "0.0.1",
+  "description": "Utility functions for working with Strapi 4",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "publish": "pnpm publish --access public",
+    "release": "pnpm build && pnpm test && pnpm run publish"
+  },
+  "private": false,
+  "keywords": [
+    "typescript",
+    "library"
+  ],
+  "author": "Christian Meter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schnaq/strapi4-utils"
+  },
+  "bugs": {
+    "url": "https://github.com/schnaq/strapi4-utils/issues"
+  },
+  "homepage": "https://github.com/schnaq/strapi4-utils#readme",
+  "devDependencies": {
+    "@types/node": "^22.5.4",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
