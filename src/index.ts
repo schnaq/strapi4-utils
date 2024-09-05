@@ -13,8 +13,9 @@ export async function queryAPI<T>([
   path,
   body,
   method,
-  apiUrl = process.env.STRAPI_API_URL,
-  token = process.env.STRAPI_API_TOKEN,
+  apiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL || process.env.STRAPI_API_URL,
+  token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN ||
+    process.env.STRAPI_API_TOKEN,
 ]: [string, any?, string?, string?, string?]): Promise<
   StrapiResponse<T> | undefined
 > {

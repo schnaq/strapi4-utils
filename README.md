@@ -9,8 +9,8 @@ This library provides functions to interact with a Strapi v4 API and some more u
 > [!NOTE]
 > You need to configure environment variables if you want to interact with the Strapi API
 
-- `STRAPI_API_URL`: The URL of the Strapi API.
-- `STRAPI_API_TOKEN`: The API token to authenticate with the Strapi API.
+- `STRAPI_API_URL`: The URL of the Strapi API. Also looks up the public variable `NEXT_PUBLIC_STRAPI_API_URL` if you are using nextjs and are using a client component.
+- `STRAPI_API_TOKEN`: The API token to authenticate with the Strapi API. Also looks up the public variable `NEXT_PUBLIC_STRAPI_API_TOKEN` if you are using nextjs and are using a client component.
 
 ## Functions
 
