@@ -1,6 +1,6 @@
-import { describe, expect, it } from "vitest";
-import { flattenAttributes, getImageUrlForSize } from "./index";
-import { Image } from "./models";
+import { describe, expect, it } from "vitest"
+import { flattenAttributes, getImageUrlForSize } from "./index"
+import { Image } from "./models"
 
 export const annoyotronImage: Image = {
   id: 5,
@@ -53,7 +53,7 @@ export const annoyotronImage: Image = {
   provider: "aws-s3",
   createdAt: "2024-01-31T15:29:58.394Z",
   updatedAt: "2024-01-31T15:29:58.394Z",
-};
+}
 
 export const annoyotron = {
   id: 2,
@@ -69,7 +69,7 @@ export const annoyotron = {
   lastName: null,
   profilePicture: annoyotronImage,
   uuid: "aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee",
-};
+}
 
 const wireAnnoyotronImage = {
   data: {
@@ -104,7 +104,7 @@ const wireAnnoyotronImage = {
       updatedAt: "2023-07-20T14:59:23.631Z",
     },
   },
-};
+}
 
 const convertedAnnoyotronImage: Image = {
   id: 7,
@@ -135,7 +135,7 @@ const convertedAnnoyotronImage: Image = {
   provider: "aws-s3",
   createdAt: "2023-07-20T14:59:23.631Z",
   updatedAt: "2023-07-20T14:59:23.631Z",
-};
+}
 
 const strapiArticle = {
   id: 1,
@@ -172,7 +172,7 @@ const strapiArticle = {
       },
     ],
   },
-};
+}
 
 const convertedArticle = {
   id: 1,
@@ -207,7 +207,7 @@ const convertedArticle = {
       media: convertedAnnoyotronImage,
     },
   ],
-};
+}
 
 const nestedInput = {
   id: 1,
@@ -222,7 +222,7 @@ const nestedInput = {
       },
     },
   },
-};
+}
 
 const nestedOutput = {
   id: 1,
@@ -231,7 +231,7 @@ const nestedOutput = {
     id: 42,
     caption: "foo",
   },
-};
+}
 
 const nullValueInput = {
   id: 1,
@@ -247,7 +247,7 @@ const nullValueInput = {
       },
     },
   },
-};
+}
 
 const nullValueOutput = {
   id: 1,
@@ -257,7 +257,7 @@ const nullValueOutput = {
     id: 42,
     caption: "foo",
   },
-};
+}
 
 const arrayOutput = {
   id: 1,
@@ -289,7 +289,7 @@ const arrayOutput = {
       ],
     },
   },
-};
+}
 
 const correctArrayOutput = {
   id: 1,
@@ -313,7 +313,7 @@ const correctArrayOutput = {
       slug: "sport",
     },
   ],
-};
+}
 
 const articlesResponseWithAuthors = {
   data: [
@@ -342,44 +342,44 @@ const articlesResponseWithAuthors = {
       },
     },
   ],
-};
+}
 
 describe("flattenAttributes", () => {
   it("should remove the attributes and move all keys up", () => {
-    expect(flattenAttributes(strapiArticle)).toStrictEqual(convertedArticle);
-  });
+    expect(flattenAttributes(strapiArticle)).toStrictEqual(convertedArticle)
+  })
   it("should remove attributes in nested structures", () => {
-    expect(flattenAttributes(nestedInput)).toStrictEqual(nestedOutput);
-  });
+    expect(flattenAttributes(nestedInput)).toStrictEqual(nestedOutput)
+  })
   it("should not remove null values", () => {
-    expect(flattenAttributes(nullValueInput)).toStrictEqual(nullValueOutput);
-  });
+    expect(flattenAttributes(nullValueInput)).toStrictEqual(nullValueOutput)
+  })
   it("should go sufficiently deep and not convert arrays to plain objects", () => {
-    expect(flattenAttributes(arrayOutput)).toStrictEqual(correctArrayOutput);
-  });
+    expect(flattenAttributes(arrayOutput)).toStrictEqual(correctArrayOutput)
+  })
   it("should flatten the authors", () => {
-    const articles = flattenAttributes(articlesResponseWithAuthors);
-    expect(articles[0].authors[0].username).toStrictEqual("leni");
-    expect(articles[0].authors[1].username).toStrictEqual("ally");
-  });
-});
+    const articles = flattenAttributes(articlesResponseWithAuthors)
+    expect(articles[0].authors[0].username).toStrictEqual("leni")
+    expect(articles[0].authors[1].username).toStrictEqual("ally")
+  })
+})
 
 describe("getImageUrlForSize", () => {
   it("should return the correct size", () => {
     expect(getImageUrlForSize(annoyotronImage, "thumbnail")!.url).toStrictEqual(
       "https://some.path.to.image/thumbnail_Annoyotron_full_800w_78989563b1.webp"
-    );
+    )
     expect(getImageUrlForSize(annoyotronImage, "small")!.url).toStrictEqual(
       "https://some.path.to.image/small_Annoyotron_full_800w_78989563b1.webp"
-    );
+    )
     expect(getImageUrlForSize(annoyotronImage, "medium")!.url).toStrictEqual(
       "https://some.path.to.image/medium_Annoyotron_full_800w_78989563b1.webp"
-    );
+    )
     expect(getImageUrlForSize(annoyotronImage, "large")!.url).toStrictEqual(
       "https://some.path.to.image/medium_Annoyotron_full_800w_78989563b1.webp"
-    );
+    )
     expect(getImageUrlForSize(annoyotronImage)!.url).toStrictEqual(
       "https://some.path.to.image/Annoyotron_full_800w_78989563b1.webp"
-    );
-  });
-});
+    )
+  })
+})
