@@ -8,6 +8,13 @@ import {
 
 /**
  * Query data from the API. Coerces the response to the given type.
+ * Expects as a default a Strapi API Token, but also accepts a user token from
+ * the users-permissions plugin.
+ * @param path The path to query.
+ * @param body The body to send.
+ * @param method The HTTP method to use.
+ * @param apiUrl The API URL to the Strapi Backend.
+ * @param token The token to use for authentication. Defaults to a Strapi API token.
  */
 export async function queryAPI<T>([
   path,
