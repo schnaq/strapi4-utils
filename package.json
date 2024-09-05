@@ -1,7 +1,7 @@
 {
   "name": "@schnaq/strapi4-utils",
-  "version": "0.0.2",
-  "description": "Utility functions for working with Strapi 4",
+  "version": "1.0.0",
+  "description": "Utility functions for working with Strapi v4",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
