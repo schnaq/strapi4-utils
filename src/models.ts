@@ -30,6 +30,12 @@ export type StrapiResponse<T> = {
   }
 }
 
+export type ImageWithDimensions = {
+  url: string
+  width: number
+  height: number
+}
+
 export type ImageFormats = "thumbnail" | "small" | "medium" | "large"
 
 /**

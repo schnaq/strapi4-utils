@@ -1,4 +1,9 @@
-import { Image, ImageFormats, StrapiResponse } from "./models"
+import {
+  Image,
+  ImageFormats,
+  ImageWithDimensions,
+  StrapiResponse,
+} from "@/models"
 
 /**
  * Query data from the API. Coerces the response to the given type.
@@ -77,11 +82,6 @@ export function flattenAttributes(obj: any): any {
   return result
 }
 
-export type ImageWithDimensions = {
-  url: string
-  width: number
-  height: number
-}
 /**
  * Return the URL for the image in the given size. Falls back to the next smaller size, if the
  * requested size is not available.
