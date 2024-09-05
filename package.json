@@ -1,6 +1,6 @@
 {
   "name": "@schnaq/strapi4-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Utility functions for working with Strapi 4",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -19,10 +19,12 @@
   },
   "private": false,
   "keywords": [
-    "typescript",
-    "library"
+    "strapi",
+    "strapi4",
+    "utils",
+    "query"
   ],
-  "author": "Christian Meter",
+  "author": "Christian Meter <christian@schnaq.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
