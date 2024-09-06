@@ -4,6 +4,7 @@ import {
   ImageFormats,
   ImageWithDimensions,
   StrapiResponse,
+  User,
 } from "@/models"
 
 /**
@@ -53,6 +54,33 @@ export async function queryAPI<T>([
     console.warn("API request failed. Status code:", result.status)
     console.warn(result)
     console.warn(await result.json())
+  }
+}
+
+/**
+ * Query data from the API from the user-permissions plugin, which formats the return type differently.
+ */
+export async function queryAPIUser([url, token]: [string, string]): Promise<
+  User | undefined
+> {
+  const headers: Headers = {
+    Authorization: token ? `Bearer ${token}` : "",
+  }
+  if (!token) {
+    return
+  }
+
+  const strapiApiUrl =
+    process.env.NEXT_PUBLIC_STRAPI_API_URL || process.env.STRAPI_API_URL
+
+  headers["Authorization"] = `Bearer ${token}`
+
+  const result = await fetch(`${strapiApiUrl}${url}`, {
+    headers,
+  })
+
+  if (result.ok) {
+    return result.json()
   }
 }
 

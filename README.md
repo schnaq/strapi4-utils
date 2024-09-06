@@ -63,6 +63,33 @@ async function getMyBoxes() {
       },
     }
   )
+
+  // ...
+}
+```
+
+### `queryAPIUser`
+
+Query the strapi user and return it. Usally, we add a `/users/me`-endpoint to the Strapi API which returns the own user.
+
+Example:
+
+```ts
+export function UserProvider({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession()
+  const [user, setUser] = useState<User>()
+
+  useSWR(
+    status === "authenticated" ? [`/users/me`, session?.accessToken] : null,
+    queryAPIUser,
+    {
+      onSuccess: (user) => {
+        setUser(user)
+      },
+    }
+  )
+
+  // ...
 }
 ```
 
