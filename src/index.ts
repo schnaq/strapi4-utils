@@ -52,8 +52,10 @@ export async function queryAPI<T>([
     }
   } else {
     console.warn("API request failed. Status code:", result.status)
+    const json = await result?.json()
     console.warn(result)
-    console.warn(await result.json())
+    console.warn(json)
+    return json
   }
 }
 
