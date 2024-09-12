@@ -9,6 +9,21 @@ export type StrapiBaseProps = {
   publishedAt?: string | Date
 }
 
+export type StrapiSearchParams = {
+  populate?: string[] | Record<string, any>
+  pagination?: {
+    page: number
+    pageSize?: number
+    withCount?: boolean
+    start?: number
+    limit?: number
+  }
+  sort?: string[]
+  filter?: Record<string, any>
+  publicationState?: "live" | "preview"
+  fields?: string[]
+}
+
 export type StrapiResponse<T> = {
   data: T
   error?: {

@@ -107,6 +107,11 @@ getImageUrlForSize(annoyotronImage, "large")
 // => returns the large URL of the image, if available. If not, it returns the next best size, i.e. medium, and so on.
 ```
 
+## Models
+
+There are plenty of common models, e.g. API Responses, Image attributes etc.
+Check out the [src/models.ts](src/models.ts).
+
 ## Release
 
 To release a new version, run the following command:
