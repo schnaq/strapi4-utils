@@ -1,3 +1,4 @@
+import * as models from "@/models"
 import {
   Headers,
   Image,
@@ -6,6 +7,8 @@ import {
   StrapiResponse,
   User,
 } from "@/models"
+
+export { models }
 
 /**
  * Query data from the API. Coerces the response to the given type.
