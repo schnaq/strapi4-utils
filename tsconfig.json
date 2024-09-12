@@ -6,6 +6,7 @@
     "target": "esnext",
     "lib": ["esnext", "DOM"],
     "declaration": true,
+    "emitDeclarationOnly": true,
     "strict": true,
     "moduleResolution": "node",
     "skipLibCheck": true,

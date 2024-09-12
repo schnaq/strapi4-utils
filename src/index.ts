@@ -1,4 +1,3 @@
-import * as models from "@/models"
 import {
   Headers,
   Image,
@@ -8,7 +7,7 @@ import {
   User,
 } from "@/models"
 
-export { models }
+export * from "@/models"
 
 /**
  * Query data from the API. Coerces the response to the given type.
