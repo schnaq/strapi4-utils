@@ -19,7 +19,7 @@ export type StrapiSearchParams = {
     limit?: number
   }
   sort?: string[]
-  filter?: Record<string, any>
+  filters?: Record<string, any>
   publicationState?: "live" | "preview"
   fields?: string[]
 }
