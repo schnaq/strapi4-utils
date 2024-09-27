@@ -45,6 +45,15 @@ export type StrapiResponse<T> = {
   }
 }
 
+export type StrapiMeta = {
+  pagination: {
+    page: number
+    pageCount: number
+    pageSize: number
+    total: number
+  }
+}
+
 export type ImageWithDimensions = {
   url: string
   width: number
