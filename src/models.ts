@@ -35,14 +35,7 @@ export type StrapiResponse<T> = {
       message: string
     }
   }
-  meta?: {
-    pagination: {
-      page: number
-      pageSize: number
-      pageCount: number
-      total: number
-    }
-  }
+  meta?: StrapiMeta
 }
 
 export type StrapiMeta = {
