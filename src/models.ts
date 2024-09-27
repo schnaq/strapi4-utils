@@ -12,7 +12,7 @@ export type StrapiBaseProps = {
 export type StrapiSearchParams = {
   populate?: string[] | Record<string, any>
   pagination?: {
-    page: number
+    page?: number
     pageSize?: number
     withCount?: boolean
     start?: number
