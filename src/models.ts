@@ -70,7 +70,7 @@ export type ImageFormat = {
   url: string
 }
 
-type ImageBaseAttributes = {
+export type MediaAttributes = {
   name: string
   alternativeText: string | null
   caption: string | null
@@ -95,7 +95,7 @@ type ImageBaseAttributes = {
 }
 
 export type Image = StrapiBaseProps &
-  ImageBaseAttributes & {
+  MediaAttributes & {
     id: StrapiID
   }
 
