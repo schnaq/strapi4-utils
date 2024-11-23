@@ -18,6 +18,7 @@ export * from "@/models"
  * @param method The HTTP method to use.
  * @param token The token to use for authentication. Defaults to a Strapi API token.
  * @param apiUrl The API URL to the Strapi Backend.
+ * @param cache The cache mode to use.
  */
 export async function queryAPI<T>([
   path,
@@ -26,7 +27,8 @@ export async function queryAPI<T>([
   token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN ||
     process.env.STRAPI_API_TOKEN,
   apiUrl = process.env.NEXT_PUBLIC_STRAPI_API_URL || process.env.STRAPI_API_URL,
-]: [string, any?, string?, string?, string?]): Promise<
+  cache = "no-cache",
+]: [string, any?, string?, string?, string?, RequestCache?]): Promise<
   StrapiResponse<T> | undefined
 > {
   const headers: Headers = {
@@ -38,6 +40,7 @@ export async function queryAPI<T>([
     method: method ? method : body ? "POST" : "GET",
     headers,
     body: body ? JSON.stringify(body) : undefined,
+    cache,
   })
 
   if (result.ok) {
