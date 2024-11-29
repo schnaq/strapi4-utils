@@ -36,6 +36,19 @@ export async function queryAPI<T>([
     "Content-Type": body ? "application/json" : "text/plain",
   }
 
+  // Ensure cache is a valid RequestCache value
+  const validCacheValues: RequestCache[] = [
+    "default",
+    "no-store",
+    "reload",
+    "no-cache",
+    "force-cache",
+    "only-if-cached",
+  ]
+  if (!validCacheValues.includes(cache)) {
+    cache = "no-cache"
+  }
+
   const result = await fetch(`${apiUrl}${path}`, {
     method: method ? method : body ? "POST" : "GET",
     headers,
