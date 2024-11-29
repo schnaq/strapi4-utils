@@ -59,11 +59,7 @@ export async function queryAPI<T>([
   if (result.ok) {
     try {
       const json = await result.json()
-      if (Array.isArray(json.data)) {
-        json.data = json.data.map(flattenAttributes)
-      } else {
-        json.data = flattenAttributes(json.data)
-      }
+      flattenData(json)
       return json
     } catch (e) {
       console.warn("Could not parse JSON from API response.")
@@ -77,6 +73,17 @@ export async function queryAPI<T>([
     } catch (e) {
       console.warn(result)
     }
+  }
+}
+
+/**
+ * Flattens the data of the API response.
+ */
+export function flattenData(json: any) {
+  if (Array.isArray(json.data)) {
+    json.data = json.data.map(flattenAttributes)
+  } else {
+    json.data = flattenAttributes(json.data)
   }
 }
 
