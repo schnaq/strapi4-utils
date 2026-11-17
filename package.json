@@ -34,10 +34,11 @@
   },
   "homepage": "https://github.com/schnaq/strapi4-utils#readme",
   "devDependencies": {
-    "@types/node": "^22.5.4",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4",
-    "vitest": "^2.0.5"
+    "@types/node": "^22.20.5",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.6",
+    "vitest": "^3.2.7"
   },
   "engines": {
     "node": ">=18",
